@@ -15,8 +15,8 @@ class InputViewController: UIViewController {
     private let ownerInputTextField = UITextField()
     private let submitButton = UIButton()
     private var commitMetadata = [CommitMetadata]()
-    let regularAttributedString = [NSAttributedString.Key.font : UIFont(name: "Helvetica", size: 17)]
-    let boldAttributedString = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 17)]
+    private let regularAttributedString = [NSAttributedString.Key.font : UIFont(name: "Helvetica", size: 17)]
+    private let boldAttributedString = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 17)]
 
     override func viewDidLoad() {
         super.viewDidLoad()
