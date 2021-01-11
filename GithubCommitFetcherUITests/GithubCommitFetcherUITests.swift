@@ -7,37 +7,78 @@
 //
 
 import XCTest
+@testable import GithubCommitFetcher
 
 class GithubCommitFetcherUITests: XCTestCase {
-
+    
+    let app = XCUIApplication()
+    let repoOwnerString = "Repository owner"
+    let repoNameString = "Repository name"
+    let viewCommitsString = "View Commits"
+    let errorString = "Error"
+    let okayString = "Okay"
+    let commitsString = "Commits"
+    let backString = "Back"
+    
+    // Make sure Connect Hardware Keyboard in the simulator is disabled
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        self.app.launch()
+    }
+    
+    func testViewsAppear() throws {
+        let ownerTextField = self.app.textFields[self.repoOwnerString]
+        let repoTextField = self.app.textFields[self.repoNameString]
+        let submitButton = self.app.staticTexts[self.viewCommitsString]
+        XCTAssertTrue(ownerTextField.exists)
+        XCTAssertTrue(repoTextField.exists)
+        XCTAssertTrue(submitButton.exists)
+    }
+    
+    func testEmptyInputTriggersErrorMessage() throws {
+        let emptyOwner = ""
+        let emptyRepo = ""
+        let ownerTextField = self.app.textFields[self.repoOwnerString]
+        let repoTextField = self.app.textFields[self.repoNameString]
+        ownerTextField.tap()
+        ownerTextField.typeText(emptyOwner)
+        repoTextField.tap()
+        repoTextField.typeText(emptyRepo)
+        self.app.staticTexts[self.viewCommitsString].tap()
+        let alertView = self.app.alerts[self.errorString]
+        expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: alertView, handler: nil)
+        waitForExpectations(timeout: 3, handler: nil)
+        alertView.scrollViews.otherElements.buttons[self.okayString].tap()
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    func testInvalidInputTriggersErrorMessage() throws {
+        let invalidOwner = "s%df"
+        let invalidRepo = "s%df"
+        let ownerTextField = self.app.textFields[self.repoOwnerString]
+        let repoTextField = self.app.textFields[self.repoNameString]
+        ownerTextField.tap()
+        ownerTextField.typeText(invalidOwner)
+        repoTextField.tap()
+        repoTextField.typeText(invalidRepo)
+        self.app.staticTexts[self.viewCommitsString].tap()
+        let alertView = self.app.alerts[self.errorString]
+        expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: alertView, handler: nil)
+        waitForExpectations(timeout: 3, handler: nil)
+        alertView.scrollViews.otherElements.buttons[self.okayString].tap()
     }
-
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTOSSignpostMetric.applicationLaunch]) {
-                XCUIApplication().launch()
-            }
-        }
+    
+    func testValidInputShowsTableView() throws {
+        let validOwner = "xtnchang"
+        let validRepo = "GithubCommitFetcher"
+        let ownerTextField = app.textFields[self.repoOwnerString]
+        let repoTextField = app.textFields[self.repoNameString]
+        ownerTextField.tap()
+        ownerTextField.typeText(validOwner)
+        repoTextField.tap()
+        repoTextField.typeText(validRepo)
+        self.app.staticTexts[self.viewCommitsString].tap()
+        let commits = self.app.navigationBars[self.commitsString]
+        expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: commits, handler: nil)
+        waitForExpectations(timeout: 3, handler: nil)
+        self.app.navigationBars[self.commitsString].buttons[self.backString].tap()
     }
 }
