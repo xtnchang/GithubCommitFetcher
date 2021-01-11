@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB35DB3025AD016200CF1F8C /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB35DB2F25AD016200CF1F8C /* Media.xcassets */; };
 		DBC6A93D25AAF3A0004D4BE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC6A93C25AAF3A0004D4BE6 /* AppDelegate.swift */; };
 		DBC6A93F25AAF3A0004D4BE6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC6A93E25AAF3A0004D4BE6 /* SceneDelegate.swift */; };
 		DBC6A94125AAF3A0004D4BE6 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC6A94025AAF3A0004D4BE6 /* InputViewController.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DB35DB2F25AD016200CF1F8C /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		DBC6A93925AAF3A0004D4BE6 /* GithubCommitFetcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubCommitFetcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBC6A93C25AAF3A0004D4BE6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBC6A93E25AAF3A0004D4BE6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +72,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DB35DB2E25AD014D00CF1F8C /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				DB35DB2F25AD016200CF1F8C /* Media.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		DBC6A93025AAF3A0004D4BE6 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +111,7 @@
 				DBC6A94525AAF3A2004D4BE6 /* Assets.xcassets */,
 				DBC6A94725AAF3A2004D4BE6 /* LaunchScreen.storyboard */,
 				DBC6A94A25AAF3A2004D4BE6 /* Info.plist */,
+				DB35DB2E25AD014D00CF1F8C /* Assets */,
 			);
 			path = GithubCommitFetcher;
 			sourceTree = "<group>";
@@ -239,6 +250,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBC6A94925AAF3A2004D4BE6 /* LaunchScreen.storyboard in Resources */,
+				DB35DB3025AD016200CF1F8C /* Media.xcassets in Resources */,
 				DBC6A94625AAF3A2004D4BE6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
