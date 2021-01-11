@@ -48,7 +48,7 @@ class InputViewController: UIViewController {
     }
     
     private func constructAttributedString() -> NSMutableAttributedString {
-        let attributedString = NSMutableAttributedString(string: "Enter a owner and repository name! \n\nNot sure? Try owner" + " ", attributes: self.regularAttributedString as [NSAttributedString.Key : Any])
+        let attributedString = NSMutableAttributedString(string: "Enter an owner and repository name! \n\nNot sure? Try owner" + " ", attributes: self.regularAttributedString as [NSAttributedString.Key : Any])
         let rangerAttributedString = NSMutableAttributedString(string: self.rangerString, attributes: self.boldAttributedString)
         let attributedStringMid = NSMutableAttributedString(string: " " + "and repository name" + " ", attributes: self.regularAttributedString as [NSAttributedString.Key : Any])
         let generalMotorsAttributedString = NSMutableAttributedString(string: self.generalMotorsString, attributes: self.boldAttributedString)
@@ -108,7 +108,12 @@ class InputViewController: UIViewController {
                     self.navigationController?.pushViewController(commitsViewController, animated: true)
                 }
             } else {
-                print("Please enter a valid owner and repository name.")
+                DispatchQueue.main.async {
+                    let alertViewController = UIAlertController(title: "Error", message: "Please enter a valid owner and repository name.", preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "Okay", style: UIAlertAction.Style.default)
+                    alertViewController.addAction(okAction)
+                    self.present(alertViewController, animated: true, completion: nil)
+                }
             }
         })
     }
