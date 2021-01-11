@@ -27,18 +27,19 @@ class CommitsViewController: UITableViewController {
         self.constructTableView()
     }
     
-    func constructViews() {
+    private func constructViews() {
         self.view.backgroundColor = .white
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.navigationItem.title = "Commits"
     }
     
-    func constructTableView() {
+    private func constructTableView() {
         self.setTableViewDelegates()
         self.tableView.register(CommitDataCell.self, forCellReuseIdentifier: CommitDataCell.cellReuseIdentifier)
         self.tableView.tableFooterView = UIView(frame: .zero)
     }
     
-    func setTableViewDelegates() {
+    private func setTableViewDelegates() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
     }
