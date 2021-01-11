@@ -57,6 +57,12 @@ extension CommitsViewController {
     override func tableView(_ tableView: UITableView,
                                  cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: CommitDataCell.cellReuseIdentifier, for: indexPath) as! CommitDataCell
+        let rowIndex = indexPath.row
+        let message = commitMetadata[rowIndex].commit.message
+        let author = commitMetadata[rowIndex].commit.author.name
+        let sha = commitMetadata[rowIndex].sha
+        cell.setCellText(message: message, author: author, sha: sha)
+        cell.selectionStyle = .none
         return cell
     }
 }
