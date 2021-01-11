@@ -97,11 +97,18 @@ class InputViewController: UIViewController {
     }
     
     private func fetchCommitData(repoName: String, owner: String) {
-        CommitFetcher.fetchCommits(repoName: repoName, owner: owner, completionHandler: { result in
-            self.commitMetadata = result
-            DispatchQueue.main.async {
-                let commitsViewController = CommitsViewController(data: self.commitMetadata)
-                self.navigationController?.pushViewController(commitsViewController, animated: true)
+        CommitFetcher.fetchCommits(repoName: repoName, owner: owner, completionHandler: { didSucceed, result in
+            if didSucceed {
+                guard let result = result else {
+                    return
+                }
+                self.commitMetadata = result
+                DispatchQueue.main.async {
+                    let commitsViewController = CommitsViewController(data: self.commitMetadata)
+                    self.navigationController?.pushViewController(commitsViewController, animated: true)
+                }
+            } else {
+                print("Please enter a valid owner and repository name.")
             }
         })
     }
