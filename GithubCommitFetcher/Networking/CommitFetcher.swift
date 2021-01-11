@@ -10,11 +10,12 @@ import Foundation
 
 class CommitFetcher: NSObject {
     
-    class func fetchCommits(completionHandler: @escaping ([CommitMetadata]) -> ()) {
+    class func fetchCommits(repoName: String, owner: String, completionHandler: @escaping ([CommitMetadata]) -> ()) {
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
         urlComponents.host = "api.github.com"
-        urlComponents.path = "/repos/xtnchang/runners-air-check/commits"
+//        urlComponents.path = "/repos/xtnchang/runners-air-check/commits"
+        urlComponents.path = "/repos/\(owner)/\(repoName)/commits"
         guard let url = urlComponents.url else {
             print("No url found")
             return
@@ -41,22 +42,5 @@ class CommitFetcher: NSObject {
             completionHandler(result)
         }
         task.resume()
-    }
-    
-    class func parseData (data: [CommitMetadata]) {
-        for response in data {
-            guard let sha = response.sha as String? else {
-                return
-            }
-            guard let author = response.commit.author.name as String? else {
-                return
-            }
-            guard let message = response.commit.message as String? else {
-                return
-            }
-            print("sha: \(sha)")
-            print("author: \(author)")
-            print("message: \(message)")
-        }
     }
 }
