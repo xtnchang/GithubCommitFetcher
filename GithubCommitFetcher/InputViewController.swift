@@ -15,8 +15,6 @@ class InputViewController: UIViewController {
     private let ownerInputTextField = UITextField()
     private let submitButton = UIButton()
     private var commitMetadata = [CommitMetadata]()
-    let rangerString = "ranger"
-    let generalMotorsString = "generalmotors"
     let regularAttributedString = [NSAttributedString.Key.font : UIFont(name: "Helvetica", size: 17)]
     let boldAttributedString = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 17)]
 
@@ -34,24 +32,24 @@ class InputViewController: UIViewController {
     private func constructViews() {
         self.view.backgroundColor = .white
         self.constructInstructionLabel()
-        self.constructTextField(textField: self.ownerInputTextField, placeholder: "Repository owner")
-        self.constructTextField(textField: self.repoInputTextField, placeholder: "Repository name")
+        self.constructTextField(textField: self.ownerInputTextField, placeholder: StringConstants.REPOSITORY_OWNER)
+        self.constructTextField(textField: self.repoInputTextField, placeholder: StringConstants.REPOSITORY_NAME)
         self.constructSubmitButton()
     }
     
     private func constructInstructionLabel() {
         self.instructionLabel.translatesAutoresizingMaskIntoConstraints = false
         self.instructionLabel.attributedText = self.constructAttributedString()
-        self.instructionLabel.textColor = UIColor(displayP3Red: 0.29, green: 0.29, blue: 0.29, alpha: 1.0)
-        self.instructionLabel.numberOfLines = 4
+        self.instructionLabel.textColor = ColorConstants.DARK_GRAY
+        self.instructionLabel.numberOfLines = 6
         self.view.addSubview(self.instructionLabel)
     }
     
     private func constructAttributedString() -> NSMutableAttributedString {
-        let attributedString = NSMutableAttributedString(string: "Enter an owner and repository name! \n\nNot sure? Try owner" + " ", attributes: self.regularAttributedString as [NSAttributedString.Key : Any])
-        let rangerAttributedString = NSMutableAttributedString(string: self.rangerString, attributes: self.boldAttributedString)
-        let attributedStringMid = NSMutableAttributedString(string: " " + "and repository name" + " ", attributes: self.regularAttributedString as [NSAttributedString.Key : Any])
-        let generalMotorsAttributedString = NSMutableAttributedString(string: self.generalMotorsString, attributes: self.boldAttributedString)
+        let attributedString = NSMutableAttributedString(string: StringConstants.INPUT_INSTRUCTION_BEGINNING, attributes: self.regularAttributedString as [NSAttributedString.Key : Any])
+        let rangerAttributedString = NSMutableAttributedString(string: StringConstants.RANGER, attributes: self.boldAttributedString)
+        let attributedStringMid = NSMutableAttributedString(string: StringConstants.INPUT_INSTRUCTION_MIDDLE, attributes: self.regularAttributedString as [NSAttributedString.Key : Any])
+        let generalMotorsAttributedString = NSMutableAttributedString(string: StringConstants.GENERAL_MOTORS, attributes: self.boldAttributedString)
         let attributedStringEnd = NSMutableAttributedString(string: ".", attributes: self.regularAttributedString as [NSAttributedString.Key : Any])
         attributedString.append(generalMotorsAttributedString)
         attributedString.append(attributedStringMid)
@@ -63,8 +61,8 @@ class InputViewController: UIViewController {
     private func constructTextField(textField: UITextField, placeholder: String) {
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.borderStyle = .roundedRect
-        textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor(displayP3Red: 0.612, green: 0.612, blue: 0.612, alpha: 1.0)])
-        textField.textColor = UIColor(displayP3Red: 0.29, green: 0.29, blue: 0.29, alpha: 1.0)
+        textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: ColorConstants.LIGHT_GRAY])
+        textField.textColor = ColorConstants.DARK_GRAY
         textField.autocorrectionType = .no
         textField.autocapitalizationType = .none
         view.addSubview(textField)
@@ -77,8 +75,8 @@ class InputViewController: UIViewController {
     
     private func constructSubmitButton() {
         self.submitButton.translatesAutoresizingMaskIntoConstraints = false
-        self.submitButton.setTitle("View Commits", for: .normal)
-        self.submitButton.backgroundColor = UIColor(displayP3Red: 0, green: 0.659, blue: 0.902, alpha: 1.0)
+        self.submitButton.setTitle(StringConstants.VIEW_COMMITS, for: .normal)
+        self.submitButton.backgroundColor = ColorConstants.BRIGHT_BLUE
         self.submitButton.layer.cornerRadius = 4.0
         self.submitButton.addTarget(self, action: #selector(self.validateInputs(_:)), for: .touchUpInside)
         self.view.addSubview(self.submitButton)
@@ -109,8 +107,8 @@ class InputViewController: UIViewController {
                 }
             } else {
                 DispatchQueue.main.async {
-                    let alertViewController = UIAlertController(title: "Error", message: "Please enter a valid owner and repository name.", preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "Okay", style: UIAlertAction.Style.default)
+                    let alertViewController = UIAlertController(title: StringConstants.ERROR, message: StringConstants.ERROR_PLEASE_ENTER_VALID, preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: StringConstants.OKAY, style: UIAlertAction.Style.default)
                     alertViewController.addAction(okAction)
                     self.present(alertViewController, animated: true, completion: nil)
                 }

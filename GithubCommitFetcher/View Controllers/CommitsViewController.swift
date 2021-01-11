@@ -30,7 +30,7 @@ class CommitsViewController: UITableViewController {
     private func constructViews() {
         self.view.backgroundColor = .white
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        self.navigationItem.title = "Commits"
+        self.navigationItem.title = StringConstants.COMMITS
     }
     
     private func constructTableView() {
