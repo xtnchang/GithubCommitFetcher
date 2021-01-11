@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct Response: Codable {
+struct CommitMetadata: Codable {
     let sha: String
-    let commit: Commit
+    let commit: CommitDetails
 }
 
-struct Commit: Codable {
+struct CommitDetails: Codable {
     let author: Author
     let message: String
 }

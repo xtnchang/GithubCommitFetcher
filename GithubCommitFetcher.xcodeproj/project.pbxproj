@@ -107,7 +107,7 @@
 			children = (
 				DBC6A97025AAF9C0004D4BE6 /* View Controllers */,
 				DBC6A97425ABC5F8004D4BE6 /* Networking */,
-				DBC6A97725ABCAEC004D4BE6 /* Models */,
+				DBC6A97725ABCAEC004D4BE6 /* Model */,
 				DBC6A93E25AAF3A0004D4BE6 /* SceneDelegate.swift */,
 				DBC6A93C25AAF3A0004D4BE6 /* AppDelegate.swift */,
 				DBC6A94525AAF3A2004D4BE6 /* Assets.xcassets */,
@@ -153,12 +153,12 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		DBC6A97725ABCAEC004D4BE6 /* Models */ = {
+		DBC6A97725ABCAEC004D4BE6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				DBC6A97825ABCAF8004D4BE6 /* CommitFetcherModel.swift */,
 			);
-			path = Models;
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

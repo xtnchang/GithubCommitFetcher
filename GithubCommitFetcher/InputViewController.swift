@@ -11,12 +11,15 @@ import UIKit
 class InputViewController: UIViewController {
     
     private let submitButton = UIButton()
+    private var commitMetadata = [CommitMetadata]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.constructView()
         self.layoutView()
-        CommitFetcher.fetchCommits()
+        CommitFetcher.fetchCommits { result in
+            self.commitMetadata = result
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,9 +41,8 @@ class InputViewController: UIViewController {
     }
     
     @objc func validateInputs(_ sender: AnyObject) {
-        let commitsViewController = CommitsViewController()
+        let commitsViewController = CommitsViewController(data: self.commitMetadata)
         self.navigationController?.pushViewController(commitsViewController, animated: true)
-        print("button pressed")
     }
     
     func layoutView() {

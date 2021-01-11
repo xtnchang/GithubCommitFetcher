@@ -10,7 +10,7 @@ import Foundation
 
 class CommitFetcher: NSObject {
     
-    class func fetchCommits() {
+    class func fetchCommits(completionHandler: @escaping ([CommitMetadata]) -> ()) {
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
         urlComponents.host = "api.github.com"
@@ -28,21 +28,22 @@ class CommitFetcher: NSObject {
                 return
             }
             
-            var responses: [Response]?
+            var responses: [CommitMetadata]?
             do {
-                responses = try JSONDecoder().decode([Response].self, from: data)
+                responses = try JSONDecoder().decode([CommitMetadata].self, from: data)
             } catch {
                 print("Failed to decode with error: \(error)")
             }
             guard let result = responses else {
+                // Success
                 return
             }
-            CommitFetcher.parseData(data: result)
+            completionHandler(result)
         }
         task.resume()
     }
     
-    class func parseData (data: [Response]) {
+    class func parseData (data: [CommitMetadata]) {
         for response in data {
             guard let sha = response.sha as String? else {
                 return
