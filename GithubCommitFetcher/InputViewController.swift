@@ -45,19 +45,6 @@ class InputViewController: UIViewController {
         self.view.addSubview(self.instructionLabel)
     }
     
-    private func constructAttributedString() -> NSMutableAttributedString {
-        let attributedString = NSMutableAttributedString(string: StringConstants.INPUT_INSTRUCTION_BEGINNING, attributes: self.regularAttributedString as [NSAttributedString.Key : Any])
-        let rangerAttributedString = NSMutableAttributedString(string: StringConstants.RANGER, attributes: self.boldAttributedString)
-        let attributedStringMid = NSMutableAttributedString(string: StringConstants.INPUT_INSTRUCTION_MIDDLE, attributes: self.regularAttributedString as [NSAttributedString.Key : Any])
-        let generalMotorsAttributedString = NSMutableAttributedString(string: StringConstants.GENERAL_MOTORS, attributes: self.boldAttributedString)
-        let attributedStringEnd = NSMutableAttributedString(string: ".", attributes: self.regularAttributedString as [NSAttributedString.Key : Any])
-        attributedString.append(generalMotorsAttributedString)
-        attributedString.append(attributedStringMid)
-        attributedString.append(rangerAttributedString)
-        attributedString.append(attributedStringEnd)
-        return attributedString
-    }
-    
     private func constructTextField(textField: UITextField, placeholder: String) {
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.borderStyle = .roundedRect
@@ -94,28 +81,16 @@ class InputViewController: UIViewController {
         self.fetchCommitData(repoName: repoName, owner: owner)
     }
     
-    private func fetchCommitData(repoName: String, owner: String) {
-        CommitFetcher.fetchCommits(repoName: repoName, owner: owner, completionHandler: { didSucceed, result in
-            if didSucceed {
-                guard let result = result else {
-                    return
-                }
-                self.commitMetadata = result
-                DispatchQueue.main.async {
-                    let commitsViewController = CommitsViewController(data: self.commitMetadata)
-                    self.navigationController?.pushViewController(commitsViewController, animated: true)
-                }
-            } else {
-                DispatchQueue.main.async {
-                    let alertViewController = UIAlertController(title: StringConstants.ERROR, message: StringConstants.ERROR_PLEASE_ENTER_VALID, preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: StringConstants.OKAY, style: UIAlertAction.Style.default)
-                    alertViewController.addAction(okAction)
-                    self.present(alertViewController, animated: true, completion: nil)
-                }
-            }
-        })
+    private func showAlertView() {
+        let alertViewController = UIAlertController(title: StringConstants.ERROR, message: StringConstants.ERROR_PLEASE_ENTER_VALID, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: StringConstants.OKAY, style: UIAlertAction.Style.default)
+        alertViewController.addAction(okAction)
+        self.present(alertViewController, animated: true, completion: nil)
     }
-    
+}
+
+// MARK: View Formatting
+extension InputViewController {
     private func layoutViews() {
         let views = [
             "instructionLabel": self.instructionLabel,
@@ -196,5 +171,43 @@ class InputViewController: UIViewController {
             multiplier: 1,
             constant: 50)]
         NSLayoutConstraint.activate(constraints)
+    }
+}
+
+// MARK: Network Request
+extension InputViewController {
+    private func fetchCommitData(repoName: String, owner: String) {
+        CommitFetcher.fetchCommits(repoName: repoName, owner: owner, completionHandler: { didSucceed, result in
+            if didSucceed {
+                guard let result = result else {
+                    return
+                }
+                self.commitMetadata = result
+                DispatchQueue.main.async {
+                    let commitsViewController = CommitsViewController(data: self.commitMetadata)
+                    self.navigationController?.pushViewController(commitsViewController, animated: true)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.showAlertView()
+                }
+            }
+        })
+    }
+}
+
+// MARK: Attributed String Helper Method
+extension InputViewController {
+    private func constructAttributedString() -> NSMutableAttributedString {
+        let attributedString = NSMutableAttributedString(string: StringConstants.INPUT_INSTRUCTION_BEGINNING, attributes: self.regularAttributedString as [NSAttributedString.Key : Any])
+        let rangerAttributedString = NSMutableAttributedString(string: StringConstants.RANGER, attributes: self.boldAttributedString)
+        let attributedStringMid = NSMutableAttributedString(string: StringConstants.INPUT_INSTRUCTION_MIDDLE, attributes: self.regularAttributedString as [NSAttributedString.Key : Any])
+        let generalMotorsAttributedString = NSMutableAttributedString(string: StringConstants.GENERAL_MOTORS, attributes: self.boldAttributedString)
+        let attributedStringEnd = NSMutableAttributedString(string: ".", attributes: self.regularAttributedString as [NSAttributedString.Key : Any])
+        attributedString.append(generalMotorsAttributedString)
+        attributedString.append(attributedStringMid)
+        attributedString.append(rangerAttributedString)
+        attributedString.append(attributedStringEnd)
+        return attributedString
     }
 }

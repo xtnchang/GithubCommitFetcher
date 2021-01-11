@@ -15,7 +15,7 @@ struct StringConstants {
     static let GENERAL_MOTORS = "generalmotors"
     static let INPUT_INSTRUCTION_BEGINNING = "Enter an owner and repository name! \n\nNot sure? Try entering owner" + " "
     static let INPUT_INSTRUCTION_MIDDLE = " " + "and repo name" + " "
-    static let OKAY = "OKAY"
+    static let OKAY = "Okay"
     static let RANGER = "ranger"
     static let REPOSITORY_NAME = "Repository name"
     static let REPOSITORY_OWNER = "Repository owner"

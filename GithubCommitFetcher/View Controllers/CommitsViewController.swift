@@ -45,7 +45,7 @@ class CommitsViewController: UITableViewController {
     }
 }
 
-// MARK: Table view delegate methods
+// MARK: Table View Delegate Methods
 extension CommitsViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return commitMetadata.count
