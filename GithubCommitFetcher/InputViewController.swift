@@ -15,8 +15,8 @@ class InputViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.constructView()
-        self.layoutView()
+        self.constructViews()
+        self.layoutViews()
         CommitFetcher.fetchCommits { result in
             self.commitMetadata = result
         }
@@ -26,7 +26,7 @@ class InputViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
 
-    func constructView() {
+    func constructViews() {
         self.view.backgroundColor = .white
         self.constructSubmitButton()
     }
@@ -45,7 +45,7 @@ class InputViewController: UIViewController {
         self.navigationController?.pushViewController(commitsViewController, animated: true)
     }
     
-    func layoutView() {
+    func layoutViews() {
         let views = [
             "submitButton": self.submitButton
         ]

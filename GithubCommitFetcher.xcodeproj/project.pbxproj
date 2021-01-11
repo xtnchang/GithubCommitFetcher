@@ -18,6 +18,7 @@
 		DBC6A97325AB753B004D4BE6 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC6A97225AB753B004D4BE6 /* MainNavigationController.swift */; };
 		DBC6A97625ABC8F7004D4BE6 /* CommitFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC6A97525ABC8F7004D4BE6 /* CommitFetcher.swift */; };
 		DBC6A97925ABCAF8004D4BE6 /* CommitFetcherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC6A97825ABCAF8004D4BE6 /* CommitFetcherModel.swift */; };
+		DBC6A97C25ABD8BC004D4BE6 /* CommitDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC6A97B25ABD8BC004D4BE6 /* CommitDataCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		DBC6A97225AB753B004D4BE6 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		DBC6A97525ABC8F7004D4BE6 /* CommitFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitFetcher.swift; sourceTree = "<group>"; };
 		DBC6A97825ABCAF8004D4BE6 /* CommitFetcherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitFetcherModel.swift; sourceTree = "<group>"; };
+		DBC6A97B25ABD8BC004D4BE6 /* CommitDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitDataCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			children = (
 				DBC6A97025AAF9C0004D4BE6 /* View Controllers */,
 				DBC6A97425ABC5F8004D4BE6 /* Networking */,
+				DBC6A97A25ABD85C004D4BE6 /* View */,
 				DBC6A97725ABCAEC004D4BE6 /* Model */,
 				DBC6A93E25AAF3A0004D4BE6 /* SceneDelegate.swift */,
 				DBC6A93C25AAF3A0004D4BE6 /* AppDelegate.swift */,
@@ -159,6 +162,14 @@
 				DBC6A97825ABCAF8004D4BE6 /* CommitFetcherModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		DBC6A97A25ABD85C004D4BE6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DBC6A97B25ABD8BC004D4BE6 /* CommitDataCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,6 +304,7 @@
 			files = (
 				DBC6A97925ABCAF8004D4BE6 /* CommitFetcherModel.swift in Sources */,
 				DBC6A94125AAF3A0004D4BE6 /* InputViewController.swift in Sources */,
+				DBC6A97C25ABD8BC004D4BE6 /* CommitDataCell.swift in Sources */,
 				DBC6A97125AB728E004D4BE6 /* CommitsViewController.swift in Sources */,
 				DBC6A93D25AAF3A0004D4BE6 /* AppDelegate.swift in Sources */,
 				DBC6A97325AB753B004D4BE6 /* MainNavigationController.swift in Sources */,

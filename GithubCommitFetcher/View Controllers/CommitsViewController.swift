@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CommitsViewController: UIViewController {
+class CommitsViewController: UITableViewController {
     
     private let commitMetadata: [CommitMetadata]
     
@@ -23,8 +23,40 @@ class CommitsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.constructViews()
+        self.constructTableView()
+    }
+    
+    func constructViews() {
         self.view.backgroundColor = .white
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        print(commitMetadata[0].sha)
+    }
+    
+    func constructTableView() {
+        self.setTableViewDelegates()
+        self.tableView.register(CommitDataCell.self, forCellReuseIdentifier: CommitDataCell.cellReuseIdentifier)
+        self.tableView.tableFooterView = UIView(frame: .zero)
+    }
+    
+    func setTableViewDelegates() {
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+    }
+}
+
+// MARK: Table view delegate methods
+extension CommitsViewController {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return commitMetadata.count
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView,
+                                 cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: CommitDataCell.cellReuseIdentifier, for: indexPath) as! CommitDataCell
+        return cell
     }
 }
