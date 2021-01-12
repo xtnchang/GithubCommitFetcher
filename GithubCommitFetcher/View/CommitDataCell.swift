@@ -39,7 +39,7 @@ class CommitDataCell: UITableViewCell {
     
     private func configureCellSubtitles() {
         self.detailTextLabel?.text = "\(self.author) \n\(self.sha)"
-        self.detailTextLabel?.textColor = UIColor(displayP3Red: 0.29, green: 0.29, blue: 0.29, alpha: 1.0)
+        self.detailTextLabel?.textColor = ColorConstants.DARK_GRAY
         self.detailTextLabel?.numberOfLines = 2
         self.detailTextLabel?.lineBreakMode = .byTruncatingTail
     }
