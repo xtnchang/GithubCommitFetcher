@@ -1,7 +1,7 @@
 # GithubCommitFetcher
 Mobile app to fetch a repo's most recent commits by specifying the repo name and owner.
 
-When testing the app in XCode simulator:
+When testing the app in Xcode simulator:
 * Enable Connect Hardware Keyboard while interacting with the app.
 * Disable Connect Hardware Keyboard while running the tests.
 
