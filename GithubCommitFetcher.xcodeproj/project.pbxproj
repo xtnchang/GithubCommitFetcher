@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		DB35DB3025AD016200CF1F8C /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB35DB2F25AD016200CF1F8C /* Media.xcassets */; };
+		DBB970CF25ADFC46008C6FD1 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB970CE25ADFC46008C6FD1 /* InputViewController.swift */; };
 		DBC6A93D25AAF3A0004D4BE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC6A93C25AAF3A0004D4BE6 /* AppDelegate.swift */; };
 		DBC6A93F25AAF3A0004D4BE6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC6A93E25AAF3A0004D4BE6 /* SceneDelegate.swift */; };
-		DBC6A94125AAF3A0004D4BE6 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC6A94025AAF3A0004D4BE6 /* InputViewController.swift */; };
 		DBC6A94625AAF3A2004D4BE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBC6A94525AAF3A2004D4BE6 /* Assets.xcassets */; };
 		DBC6A94925AAF3A2004D4BE6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBC6A94725AAF3A2004D4BE6 /* LaunchScreen.storyboard */; };
 		DBC6A95F25AAF3A2004D4BE6 /* GithubCommitFetcherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC6A95E25AAF3A2004D4BE6 /* GithubCommitFetcherUITests.swift */; };
@@ -35,10 +35,10 @@
 
 /* Begin PBXFileReference section */
 		DB35DB2F25AD016200CF1F8C /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		DBB970CE25ADFC46008C6FD1 /* InputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 		DBC6A93925AAF3A0004D4BE6 /* GithubCommitFetcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubCommitFetcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBC6A93C25AAF3A0004D4BE6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBC6A93E25AAF3A0004D4BE6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DBC6A94025AAF3A0004D4BE6 /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InputViewController.swift; path = ../InputViewController.swift; sourceTree = "<group>"; };
 		DBC6A94525AAF3A2004D4BE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DBC6A94825AAF3A2004D4BE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DBC6A94A25AAF3A2004D4BE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -128,7 +128,7 @@
 		DBC6A97025AAF9C0004D4BE6 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				DBC6A94025AAF3A0004D4BE6 /* InputViewController.swift */,
+				DBB970CE25ADFC46008C6FD1 /* InputViewController.swift */,
 				DBC6A96E25AAF9B7004D4BE6 /* CommitsViewController.swift */,
 				DBC6A97225AB753B004D4BE6 /* MainNavigationController.swift */,
 			);
@@ -270,8 +270,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBC6A97925ABCAF8004D4BE6 /* CommitFetcherModel.swift in Sources */,
+				DBB970CF25ADFC46008C6FD1 /* InputViewController.swift in Sources */,
 				DBC6A97F25AC363D004D4BE6 /* StringConstants.swift in Sources */,
-				DBC6A94125AAF3A0004D4BE6 /* InputViewController.swift in Sources */,
 				DBC6A98125AC3A63004D4BE6 /* ColorConstants.swift in Sources */,
 				DBC6A97C25ABD8BC004D4BE6 /* CommitDataCell.swift in Sources */,
 				DBC6A97125AB728E004D4BE6 /* CommitsViewController.swift in Sources */,
